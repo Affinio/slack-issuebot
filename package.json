@@ -1,0 +1,29 @@
+{
+  "name": "slack-issuebot",
+  "version": "0.1.0",
+  "description": "A slack bot to make linking and creating GitHub issues easier",
+  "main": "issuebot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Affinio/slack-issuebot.git"
+  },
+  "keywords": [
+    "slack",
+    "bot",
+    "github",
+    "issue",
+    "issuebot"
+  ],
+  "author": "Joel Kuntz <joel@affinio.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Affinio/slack-issuebot/issues"
+  },
+  "homepage": "https://github.com/Affinio/slack-issuebot#readme",
+  "dependencies": {
+    "botkit": "0.0.5"
+  }
+}
