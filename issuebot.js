@@ -46,7 +46,7 @@ var messageEvents = ["direct_message","direct_mention","mention","ambient"];
 //**** End bot help
 
 //**** Bot configuration
-  controller.hears("issuebot set default (organization|username) ([A-Za-z0-9-]*[^-]$)", messageEvents, function(bot, message){
+  controller.hears("issuebot set default (organization|username) ([A-Za-z0-9-]+[^-]$)", messageEvents, function(bot, message){
     var organization = message.text.match(/issuebot set default (organization|username) ([A-Za-z0-9-]*[^-]$)/);
     if (organization && organization.length === 3){
       controller.storage.teams.save({id: "organization", organization:organization[2]}, function(err) {
@@ -66,8 +66,8 @@ var messageEvents = ["direct_message","direct_mention","mention","ambient"];
 
 //**** Repository parsing
   // Detect a user/org with repo and issue: username/reponame#123
-  controller.hears("([A-Za-z0-9_.-]*[^-])\/([A-Za-z0-9_.-]*)#([0-9]*)", messageEvents, function(bot,message) {
-    var repositoryMessage = message.text.match(/([A-Za-z0-9_.-]*[^-])\/([A-Za-z0-9_.-]*)#([0-9]*)/);
+  controller.hears("([A-Za-z0-9_.-]+[^-])\/([A-Za-z0-9_.-]+)#([0-9]+)", messageEvents, function(bot,message) {
+    var repositoryMessage = message.text.match(/([A-Za-z0-9_.-]+[^-])\/([A-Za-z0-9_.-]+)#([0-9]+)/);
     if (repositoryMessage && repositoryMessage.length === 4){
       var username = repositoryMessage[1];
       var reponame = repositoryMessage[2];
@@ -78,8 +78,8 @@ var messageEvents = ["direct_message","direct_mention","mention","ambient"];
   });
 
   // Detect a repo with issue: reponame#123
-  controller.hears("([A-Za-z0-9_.-]*)#([0-9]*)", messageEvents, function(bot,message) {
-    var repositoryMessage = message.text.match(/([A-Za-z0-9_.-]*)#([0-9]*)/);
+  controller.hears("([A-Za-z0-9_.-]+)#([0-9]+)", messageEvents, function(bot,message) {
+    var repositoryMessage = message.text.match(/([A-Za-z0-9_.-]+)#([0-9]+)/);
     if (repositoryMessage && repositoryMessage.length === 3){
       controller.storage.teams.get("organization", function(err, data){
         if (err){ console.log(err); }
