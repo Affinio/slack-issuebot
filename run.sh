@@ -1,3 +1,3 @@
 #!/bin/sh
-npm install
-token=$1 node issuebot.js
+$2npm install
+token=$1 $2node issuebot.js
